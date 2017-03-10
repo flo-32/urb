@@ -1,1 +1,1 @@
-# FLorian Schmidt - AngularJS + Node.js Sample Project
+# Florian Schmidt - AngularJS + Node.js Sample Project
