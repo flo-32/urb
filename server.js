@@ -13,7 +13,7 @@ var config = require('./config/config'); //static configurations
 var multer  = require('multer');
 //var storage = multer.memoryStorage();
 //var upload = multer({ storage: storage });
-var upload = multer({ dest: 'tmp/uploads' }); 
+var upload = multer({ dest: 'tmp/uploads' });
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.dbUrl, function(err){
@@ -39,15 +39,7 @@ app.use(express.static('public')); //static files
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 
-// required for passport
-//app.use(session({
-//    secret: 'ilovescotchscotchyscotchscotch',
-//    resave: false,
-//    saveUninitialized: true,
-//    cookie: {secure: true}
-//})); 
 app.use(passport.initialize());
-//app.use(passport.session());
 
 var api = require('./app/api')(app, express, passport, upload, cloudinary);
 app.use('/api', api);
@@ -62,6 +54,6 @@ http.createServer(app).listen(app.get('port'), function (err) {
     if(err) {
         console.log(err);
     } else {
-      console.log('Express server listening on port ' + app.get('port'));  
+      console.log('Express server listening on port ' + app.get('port'));
     }
 });
