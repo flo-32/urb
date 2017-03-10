@@ -1,0 +1,73 @@
+<style>
+    .cropArea {
+        background-color: #eee;
+        overflow: hidden;
+        width:500px;
+        height:350px;
+    }
+</style>
+<div class="section">
+    <div class="container ">
+        <div class="row">
+            <div class="col-xs-12 col-md-7 col-md-offset-2 card">
+                <h2>Poste deinen Tag</h2>
+                <form name="myForm" ng-submit="profile.updateUser()" method="post">
+                  <div class="form-group">
+                      <fieldset>
+                          <label for="file">Your URB-X Image</label>
+                          <!-- <button ngf-select ng-model="picFile" ngf-accept="'image/*'" required="">
+                          Select Picture</button> -->
+                        <input ngf-select="" ng-model="picFile" class="form-control" name="file" ngf-accept="'image/*'" required="" type="file">
+                      </fieldset>
+                  </div>
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input ng-model="post.postData.title" type="text" class="form-control" id="title" placeholder="Enter Title">
+                        <small id="titleHelp" class="form-text text-muted">Title of your Post.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Story</label>
+                        <textarea  ng-model="post.postData.story" type="text" rows="3" class="form-control" id="story" placeholder="Enter Story"></textarea>
+                        <small id="storyHelp" class="form-text text-muted">Story of your Post.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Country</label>
+                        <select class="form-control" name="country" id="country"
+                                ng-options="option.name for option in post.postData.country.availableOptions track by option.id"
+                                ng-model="post.postData.country.selectedOption"></select>
+                    </div>
+                    <div class="form-group" ng-show="post.postData.country.selectedOption.id == 1">
+                        <label for="title">State</label>
+                        <select class="form-control" name="state" id="state"
+                                ng-options="option.name for option in post.postData.state.availableOptions track by option.id"
+                                ng-model="post.postData.state.selectedOption"></select>
+                    </div>
+                    <div layout-gt-xs="row">
+                        <div flex-gt-xs>
+                            <h4>Only weekends within given range are selectable</h4>
+                            <md-datepicker ng-model="post.postData.date" md-open-on-focus md-placeholder="Enter date"
+                                           md-min-date="post.minDate" md-max-date="post.maxDate"
+                                           md-date-filter="ctrl.onlyWeekendsPredicate"></md-datepicker>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-primary" ng-disabled="!myForm.$valid" ng-click="post.upload(picFile)">Submit</button>
+                        <span class="progress" ng-show="picFile.progress >= 0">
+                            <div style="width:{{picFile.progress}}%" ng-bind="picFile.progress + '%'" class="ng-binding"></div>
+                        </span>
+                        <span ng-show="post.message">{{post.message}}</span>
+                    </div>
+                    <!-- <div ng-show="picFile" class="form-group">
+                        <div ngf-drop ng-model="picFile" ngf-pattern="image/*"
+                             class="cropArea">
+                            <img-crop image="picFile  | ngfDataUrl"  area-type="square"
+                                      result-image="post.postData.croppedDataUrl" ng-init="post.postData.croppedDataUrl = ''">
+                            </img-crop>
+                        </div>
+                    </div> -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

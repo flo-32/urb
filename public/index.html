@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="urbApp">
+    <head>
+        <base href="/">
+        <meta charset="UTF-8">
+        <title>urb-X</title>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+        <script type="text/javascript" src="https://code.angularjs.org/1.5.8/angular-route.min.js"></script>
+        <!-- Angular Material style sheet -->
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+        <!-- Angular Material Library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+
+        <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
+
+        <!-- shim is needed to support non-HTML5 FormData browsers (IE8-9)-->
+        <script src="js/ng-file-upload-shim.min.js"></script>
+        <script src="js/ng-file-upload.min.js"></script>
+
+        <!-- ng-img-crop -->
+        <script src="js/ng-img-crop.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/ng-img-crop.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+
+        <!--Service-->
+        <script type="text/javascript" src="services/authService.js"></script>
+        <script type="text/javascript" src="services/userService.js"></script>
+        <script type="text/javascript" src="services/postService.js"></script>
+
+        <!--Controller-->
+        <script type="text/javascript" src="controllers/mainController.js"></script>
+        <script type="text/javascript" src="controllers/userController.js"></script>
+        <script type="text/javascript" src="controllers/postController.js"></script>
+        <script type="text/javascript" src="controllers/timelineController.js"></script>
+
+
+        <script type="text/javascript" src="app.routes.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+
+
+        <!-- 1 -->
+        <link title="timeline-styles" rel="stylesheet" href="css/timeline.css">
+        <script src="js/timeline.js"></script>
+    </head>
+    <body>
+        <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+            <md-nav-item md-nav-href="/" name="home">Home</md-nav-item>
+            <md-nav-item md-nav-href="posts" name="posts">Posts</md-nav-item>
+            <md-nav-item md-nav-href="myPosts" name="myPosts">Timeline</md-nav-item>
+            <md-nav-item md-nav-href="profile" name="profile">Profile</md-nav-item>
+            <!-- these require actual routing with ui-router or ng-route, so they won't work in the demo
+            <md-nav-item md-nav-sref="app.page4" name="page4">Page Four</md-nav-item>
+            <md-nav-item md-nav-href="#page5" name="page5">Page Five</md-nav-item>
+            -->
+          </md-nav-bar>
+    <main>
+        <div ng-view></div>
+    </main>
+    <footer></footer>
+</body>
+</html>
